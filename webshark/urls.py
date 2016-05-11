@@ -1,0 +1,8 @@
+from django.conf.urls import patterns, include, url
+from django.contrib import admin
+
+urlpatterns = patterns('',
+    # url(r'^admin/', admin.site.urls),
+    url(r'^$', 'capture.views.capture', name='capture'),
+    # url(r'^capture/', include('capture.urls')),
+)
