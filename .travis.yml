@@ -2,9 +2,13 @@ language: python
 python:
   - "3.4"
   - "3.5"
+
+env:
+  - DJANGO_SETTINGS_MODULE=web-shark.settings
 # command to install dependencies
 install: "pip install -r requirements.txt"
 # command to run tests
-script: nosetests
+script:
+  - python manage.py test
 notifications:
   slack: web-shark:XvvW4b1nPjM3kUfXbIboQrtk
