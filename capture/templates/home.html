@@ -4,6 +4,20 @@
     <title>Web Shark</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+    <!--<script type="text/javascript">
+        $(document).ready(function(){
+            $('#capture').click(function() {    
+                $.ajax({
+                    url: '/caputure',
+                    method: 'POST',
+                    success: function (data) { 
+                        $('#packet_list').html(data);
+                    }
+                });
+            });
+        });
+    </script>-->
 </head>
 <body>
     <div class="container">
@@ -11,11 +25,16 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="text-center">
                     <h1>Web Shark!</h1>
-                    <form action="#" method="get">
+                    <form action="/capture/" method="get">
                         <input type="sumit" class="btn btn-lg btn-primary" value="Click" name="capture"/>
                     </form>
-                    <select multiple class="unselected form-control" style="margin-top:30px; height: 200px; width: 100%;">
-                        <option value="1">test</option>
+                    <select id="packet_list" multiple class="unselected form-control" style="margin-top:30px; height: 200px; width: 100%;">
+		    {% if packet_list %}
+			{% for packet in packet_list %}
+                        <option value="{{ packet.id }}">{{ packet.id }}</option>
+			{% endfor %}
+		    {% endif %}
+
                     </select>
                     <div style="height: 200px; width: 100%; margin-top:20px; outline:1px solid;">
                     </div>

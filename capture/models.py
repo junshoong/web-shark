@@ -1,8 +1,8 @@
 from django.db import models
 
 class Packet(models.Model):
-    date = models.DateTimeField('Packet time')
-    context = models.CharField(max_length=1500)
+    # date = models.DateTimeField('Packet time')
+    context = models.BinaryField()
 
     def __str__(self):
         return self.context
